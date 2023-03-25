@@ -13,7 +13,19 @@ This way you can achieve double OTA testing: flash the firmware -> that download
 export ESP_SSID="NAME"
 export ESP_PASSWD="PASSWD"
 export OTA_LINK="LINK"
-cargo espflash --monitor --release
+cargo espflash flash --release --monitor
+```
+## Testing
+
+This script will execute the following tasks:
+1. Build the example blinky as OTA
+2. Build the embedded updater with blinky as OTA included
+2. Build and Flash the embedded updater with an embedded updater as OTA, which has blinky as OTA
+4. After two successful embedded OTA updates have been completed, the LED should blink
+   
+```sh
+./build_ota test
+cargo espflash flash --release --monitor --features=embedded
 ```
 
 ## Troubleshooting

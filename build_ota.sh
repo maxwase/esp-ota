@@ -13,10 +13,10 @@ help(){
 
 case $1 in
     self)
-        cargo espflash save-image --release ESP32-C3 ota.bin $2
+        cargo espflash save-image --release --chip esp32c3 ota.bin $2
     ;;
     example)
-        cargo espflash save-image --example blinky --release ESP32-C3 ota.bin
+        cargo espflash save-image --example blinky --release --chip esp32c3 ota.bin
     ;;
     test)
         # Compile blinky ota.bin 
